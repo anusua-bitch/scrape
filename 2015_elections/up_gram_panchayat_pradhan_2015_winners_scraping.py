@@ -7,7 +7,7 @@ from selenium.common.exceptions import UnexpectedAlertPresentException
 driver = webdriver.Firefox()  
 
 driver.maximize_window()  
-driver.get("http://sec.up.nic.in/ElecLive/WinnerList.aspx")  
+driver.get("https://sec.up.nic.in/ElecLive/WinnerList.aspx")  
 
 el = driver.find_element_by_id("ContentPlaceHolder1_ddlpost")
 

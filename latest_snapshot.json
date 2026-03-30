@@ -1,0 +1,35 @@
+{
+  "source_url": "https://sec.up.nic.in/site/DownloadCandidateFaDebt.aspx",
+  "fetched_at_utc": "2026-03-30T10:02:15.605237+00:00",
+  "post_types": [
+    {
+      "value": "-1",
+      "label": "पद चुनें"
+    },
+    {
+      "value": "1",
+      "label": "जिला पंचायत अध्यक्ष"
+    },
+    {
+      "value": "2",
+      "label": "जिला पंचायत सदस्य"
+    },
+    {
+      "value": "3",
+      "label": "क्षेत्र पंचायत प्रमुख"
+    },
+    {
+      "value": "4",
+      "label": "क्षेत्र पंचायत सदस्य"
+    },
+    {
+      "value": "5",
+      "label": "ग्राम पंचायत प्रधान"
+    },
+    {
+      "value": "6",
+      "label": "ग्राम पंचायत सदस्य"
+    }
+  ],
+  "post_type_count": 7
+}

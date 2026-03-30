@@ -5,7 +5,7 @@ import time
 driver = webdriver.Firefox()  
 
 driver.maximize_window()  
-driver.get("http://sec.up.nic.in/site/DownloadCandidateFaDebt.aspx")  
+driver.get("https://sec.up.nic.in/site/DownloadCandidateFaDebt.aspx")  
 
 el = driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_ddlPostTypes\"]")
 
