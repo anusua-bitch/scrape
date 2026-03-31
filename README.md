@@ -25,6 +25,15 @@ The Selenium scraping scripts in `2015_elections/` and `2021_elections/` have al
 
 ## 2021 Gram Panchayat Member + Head (full UP) scraper
 
+Scraper script:
+
+- `2021_elections/scrape_gp_member_head_2021.py`
+
+This scraper is built for the dynamic ASP.NET page:
+
+- `https://sec.up.nic.in/site/DownloadCandidateFaDebt.aspx`
+
+It targets only the two Gram Panchayat-level post types:
 A new Playwright-based scraper is available at:
 
 - `2021_elections/scrape_gp_member_head_2021.py`
@@ -34,6 +43,79 @@ It targets only the two GP-level post types from `DownloadCandidateFaDebt.aspx`:
 - `5` → Gram Panchayat Head (`ग्राम पंचायत प्रधान`)
 - `6` → Gram Panchayat Member (`ग्राम पंचायत सदस्य`)
 
+The script loops:
+
+`post type -> district -> block -> gram panchayat -> View button -> result grid`
+
+It also supports:
+
+- checkpoint resume (`--resume`)
+- optional limit for testing (`--max-gp`)
+
+Outputs are saved to `2021_elections/output/`:
+
+- `gp_member_head_candidates_2021.csv` (combined)
+- `gp_member_candidates_2021.csv`
+- `gp_head_candidates_2021.csv`
+- `scrape_progress.json` (resume checkpoint)
+
+---
+
+## Beginner guide: run on your local computer
+
+### 1) Install Python
+
+- Install Python 3.10+ from https://www.python.org/downloads/
+- During installation on Windows, check **"Add Python to PATH"**.
+
+### 2) Download this project
+
+Use one of these methods:
+
+- Download ZIP from GitHub and extract it, OR
+- Use Git:
+
+```bash
+git clone <YOUR_REPO_URL>
+cd scrape
+```
+
+### 3) Create and activate a virtual environment (recommended)
+
+**Windows (PowerShell):**
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+**macOS/Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 4) Install dependencies
+
+```bash
+pip install -r requirements.txt
+playwright install chromium
+```
+
+If you get browser-library errors on Linux, run:
+
+```bash
+playwright install-deps chromium
+```
+
+### 5) Run a small test first (recommended)
+
+```bash
+python 2021_elections/scrape_gp_member_head_2021.py --headless --max-gp 5
+```
+
+### 6) Run the full scrape
 ### Setup
 
 ```bash
