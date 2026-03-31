@@ -34,6 +34,11 @@ This scraper is built for the dynamic ASP.NET page:
 - `https://sec.up.nic.in/site/DownloadCandidateFaDebt.aspx`
 
 It targets only the two Gram Panchayat-level post types:
+A new Playwright-based scraper is available at:
+
+- `2021_elections/scrape_gp_member_head_2021.py`
+
+It targets only the two GP-level post types from `DownloadCandidateFaDebt.aspx`:
 
 - `5` → Gram Panchayat Head (`ग्राम पंचायत प्रधान`)
 - `6` → Gram Panchayat Member (`ग्राम पंचायत सदस्य`)
@@ -210,4 +215,28 @@ python 2021_elections/scrape_gp_member_head_2021.py --headless --max-gp 5
 
 # Full run with resume
 python 2021_elections/scrape_gp_member_head_2021.py --headless --resume
+### Setup
+
+```bash
+pip install playwright
+playwright install chromium
+```
+
+### Run
+
+```bash
+python 2021_elections/scrape_gp_member_head_2021.py --headless --resume
+```
+
+Outputs are written to `2021_elections/output/`:
+
+- `gp_member_head_candidates_2021.csv` (combined)
+- `gp_member_candidates_2021.csv`
+- `gp_head_candidates_2021.csv`
+- `scrape_progress.json` (resume checkpoint)
+
+### Smoke test
+
+```bash
+python 2021_elections/scrape_gp_member_head_2021.py --headless --max-gp 5
 ```
