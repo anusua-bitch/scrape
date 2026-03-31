@@ -116,6 +116,105 @@ python 2021_elections/scrape_gp_member_head_2021.py --headless --max-gp 5
 ```
 
 ### 6) Run the full scrape
+
+```bash
+python 2021_elections/scrape_gp_member_head_2021.py --headless --resume
+```
+
+### 7) Where to find output
+
+Check:
+
+- `2021_elections/output/gp_member_head_candidates_2021.csv`
+- `2021_elections/output/gp_member_candidates_2021.csv`
+- `2021_elections/output/gp_head_candidates_2021.csv`
+
+---
+
+## Ready-to-use Colab notebook
+
+If you want a direct copy-paste notebook, use:
+
+- `notebooks/UP_GP_Scraper_Colab.ipynb`
+
+Open it in Colab and run cells top-to-bottom.
+
+---
+
+## Beginner guide: continue in Google Colab
+
+> Colab sessions are temporary. Save outputs to Google Drive so progress is not lost.
+
+### 1) Open Colab and mount Drive
+
+In a new notebook cell:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+### 2) Clone repo into Drive (persistent)
+
+```bash
+%cd /content/drive/MyDrive
+!git clone <YOUR_REPO_URL> scrape
+%cd /content/drive/MyDrive/scrape
+```
+
+If repo already exists:
+
+```bash
+%cd /content/drive/MyDrive/scrape
+!git pull
+```
+
+### 3) Install dependencies in Colab
+
+```bash
+!pip install -r requirements.txt
+!playwright install chromium
+!playwright install-deps chromium
+```
+
+### 4) Run a smoke test
+
+```bash
+!python 2021_elections/scrape_gp_member_head_2021.py --headless --max-gp 5 --output-dir /content/drive/MyDrive/scrape/2021_elections/output
+```
+
+### 5) Run/continue full scrape
+
+```bash
+!python 2021_elections/scrape_gp_member_head_2021.py --headless --resume --output-dir /content/drive/MyDrive/scrape/2021_elections/output
+```
+
+Because output/checkpoint are in Drive, you can safely rerun this later and it will continue.
+
+### 6) Download the final CSV
+
+```python
+from google.colab import files
+files.download('/content/drive/MyDrive/scrape/2021_elections/output/gp_member_head_candidates_2021.csv')
+```
+
+---
+
+## Useful tips
+
+- Use `--resume` for long runs.
+- Keep `--headless` on for server/Colab runs.
+- Start with `--max-gp 5` or `--max-gp 20` to verify setup.
+- If the website is temporarily slow/unavailable, just rerun with `--resume`.
+
+## Quick command summary
+
+```bash
+# Smoke test
+python 2021_elections/scrape_gp_member_head_2021.py --headless --max-gp 5
+
+# Full run with resume
+python 2021_elections/scrape_gp_member_head_2021.py --headless --resume
 ### Setup
 
 ```bash
